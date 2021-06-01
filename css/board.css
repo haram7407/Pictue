@@ -1,0 +1,97 @@
+/*
+게시판 통합 css
+*/
+
+@charset "UTF-8";
+/* -----게시판 보드 시작-----------------*/
+*{
+	margin:20px;
+	padding:0;
+	box-sizing:border-box;
+}
+
+#board {
+	margin:50px auto;
+	width:100%;
+	position : relative;
+	text-align: center;
+}
+
+#board #header{
+	width : 100%;
+	height : 300px;
+	border : 2px solid #000000;
+}
+
+#board #center {
+	width:100%;
+	min-height:500px;
+	height:100%;
+	margin-right:30px;
+	
+	
+}
+
+#board #menu_bar{
+	width: 300px;
+	height : 400px;
+	border : 1px solid #000000;
+	float:left;
+}
+
+#board #doc{
+	width:1000px;
+	height:100%;
+	border : 1px solid #000000;
+	float:left;
+}
+
+#board #footer{
+	clear:both;
+	width:100%;
+	border : 2px solid #000000;
+}
+
+#board #center .ul{
+	list-style : none;
+}
+
+/* -------게시판 보드 끝--------------------*/
+
+#board header{
+    margin-top: 1%;
+    background-color:#ccffcc;
+    width: 100%;
+    height: 40px;
+    margin-right: 100px;
+    display: inline-block;
+}
+
+#board #logo{
+    font-size: 30px;
+    float: left;
+}
+#board #login{
+    float: right;
+    font-size: 20px;
+}
+/*---------------header끝-------------*/
+
+
+/*---------------메뉴시작-------------*/
+#board nav{
+    position: fixed;
+    width: 100%;
+    height: 25px;
+}
+
+#board .menu #sub2, #board .menu #sub3, #board .menu #sub4, #board .menu #sub1{
+    display: none;
+}
+
+#board .menu .mMenu{
+    float: left;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+/*---------------메뉴끝-------------*/
