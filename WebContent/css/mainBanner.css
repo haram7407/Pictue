@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+/* reset 수정하지마세요 */
+* {margin: 0;padding: 0; box-sizing: border-box;}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td{margin:0;padding:0;}
+h1, h2, h3, h4, h5, h6 {font-weight: 700; font-size: inherit;}
+a {color: inherit; text-decoration: inherit;}
+img {vertical-align: middle;}
+a img {border: none;}
+li {list-style: none;}
+address, em, i {font-style: normal;}
+/* reset 수정하지마세요 */
+
+/* 폰트 수정하지마세요 */
+@font-face {
+    font-family: 'MapoFlowerIsland';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}/*마포꽃섬체- 약간 얇은느낌*/
+
+@font-face {
+    font-family: 'Dolbomche_B';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/Dolbomche_B.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}/*문화재돌봄체- bold*/
+
+@font-face {
+    font-family: 'Dolbomche_R';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/Dolbomche_R.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}/*문화재돌봄체- regular*/
+
+/* 폰트 수정하지마세요 */
+
+#mBanner{
+    width: 100%;
+    position: relative;
+}
+ #mBanner #event{/*이벤트 창(창문이 있는 벽)*/
+    width: 100%;
+    height: 600px;
+    border: 1px solid #ccffcc;
+    position: relative;
+}
+
+ #mBanner #event #mouse_hover{
+	position: relative;
+	width: 80%;
+	margin: 0 auto;
+	height: 3%;
+	display: flex;
+	align-items: center;
+	justify-content:space-between;
+}
+
+ #mBanner #event #mouse_hover input[type=button]{
+ 	height: 100%;
+ 	width: 19.8%;
+ 	border:none;
+ 	cursor: pointer;
+ 	background-color:rgba(240,240,240,0.7);
+ }
+ 
+ #mBanner #event #mouse_hover input[type=button]:hover{
+ 	background-color: rgba(74,74,74,0.3);
+ 	
+ 	/*바탕색을 서서히 변경*/		
+		transition-property:background-color;
+		transition-duration:1.5s;
+ }
+
+#container{/* 이벤트 창 내 배너창(창문틀)*/
+	position: relative;
+	width: 80%;
+	height: 87%;
+	margin: 60px auto 0px;
+}
+#container #banDoc{/*배너창 글씨*/
+position: absolute;
+top: 0%;
+color: #000000;
+width: 100%;
+height: 100%;
+font-size: 35px;
+line-height: 150px;
+font-weight: bold;
+padding: 0% 3%;
+font-family: 'Dolbomche_B';
+-webkit-text-stroke-width: 1px;
+-webkit-text-stroke-color: #7e7e7e;
+opacity: 0;
+}
+
+#container #slide{
+	position: relative;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;	
+}
+
+#container #slide #imgSrc{
+	opacity: 0;
+	z-index: -1;
+	position: absolute;
+}
+
+#event #colored{
+	background-color: #CD853F;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0%;
+	z-index: -2;
+	opacity: 0;
+}

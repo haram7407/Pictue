@@ -1,0 +1,147 @@
+@charset "UTF-8";
+
+/* reset 수정하지마세요 */
+* {margin: 0;padding: 0; box-sizing: border-box;}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td{margin:0;padding:0;}
+h1, h2, h3, h4, h5, h6 {font-weight: 700; font-size: inherit;}
+a {color: inherit; text-decoration: inherit;}
+img {vertical-align: middle;}
+a img {border: none;}
+li {list-style: none;}
+address, em, i {font-style: normal;}
+/* reset 수정하지마세요 */
+
+/* 글씨체 수정하지마세요 */
+@font-face {
+    font-family: 'MapoFlowerIsland';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}/*마포꽃섬체- 약간 얇은느낌*/
+
+/*---------------header 시작-------------*/
+#header header{
+	font-family: 'MapoFlowerIsland';
+	font-weight: bold;
+    margin-top: 1%;
+    width: 100%;
+    height: 5%;
+    position: fixed;
+    z-index: 1;
+    background-color: rgba(240,240,240,0.7);
+    transition:height 0.5s;
+}
+
+#header header:hover,#header header:focus{
+	height: 14%;
+	transition:height 0.5s;
+}
+
+#header #logo{
+	cursor: pointer;
+    font-size: 34px;
+    float: left;
+    margin-left: 10px;
+    font-weight: bold;
+}
+#header #login{
+	cursor: pointer;
+    float: right;
+    font-size: 15px;
+    margin-right: 10px;
+}
+
+#header #login{
+	position: relative;
+}
+
+#header #login:after{
+	content:'';
+    width: 0%;
+    height:2px;
+    position:absolute;
+    background: var(--lineeffect-color);
+    bottom: -6px;
+    left:50%;
+    transform:translatex(-50%);
+    transition:all 0.5s;
+}
+
+#header #login:hover:after, #header #login:focus:after{
+	width:100%;
+}
+/*---------------header 끝-------------*/
+
+
+/*---------------메뉴 nav 시작-------------*/
+#header nav{
+    width: 70%;
+	height: 100%;
+	position: absolute;
+	left: 14%;
+	line-height: 30px;
+	right: 12%;
+}
+
+#header .menu{
+	width: 100%;
+	height: 100%;
+	display: flex;
+    justify-content: space-between;
+	position: relative;
+}
+
+#header .menu .mMenu{
+    float: left;
+    top: 0px;
+    width: 10%;
+    position: relative;
+    height: 100%;
+}
+
+
+#header .menu .mMenu .sub{
+	margin-top: 7%;
+    display: none;
+    position: absolute;
+    line-height: 40px;
+
+}
+#header .menu .mMenu .sub>a{
+    font-size: 15px;
+    font-weight: normal;
+}
+#header .menu .mMenu>a{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#header .menu .mMenu a{
+	position: relative;
+}
+
+
+#header .menu .mMenu a:after{
+	content:'';
+    width: 0%;
+    height:2px;
+    position:absolute;
+    background: var(--lineeffect-color);
+    bottom: -2px;
+    left:50%;
+    transform:translatex(-50%);
+    transition:all 0.5s;
+}
+
+#header .menu .mMenu a:hover:after, #header .menu .mMenu>a:focus:after{
+	width:100%;
+}
+
+#header .menu .mMenu:hover{
+	background-color: rgba(170,170,170,0.5);
+	height: 100%;
+	border-radius: 0px 0px 3px 3px;
+	transition:all 2s;
+}
+
+/*---------------메뉴 nav 끝-------------*/

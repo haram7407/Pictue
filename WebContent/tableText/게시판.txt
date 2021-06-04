@@ -1,0 +1,82 @@
+/* 고대 테이블 생성 */
+CREATE TABLE ancient(
+ serial integer CONSTRAINT constAn_serial_pk PRIMARY KEY,
+ pserial integer CONSTRAINT constAn_pserial_nn NOT NULL,
+ mdate DATE(),
+ seller varchar2(20),
+ title varchar2(20),
+ doc varchar2(1000),
+ hit integer,
+ price varchar2,
+ lowPrice varchar2
+)
+
+/* 고대 파일 첨부 테이블 생성 */
+CREATE TABLE ancientAtt(
+ serial integer CONSTRAINT constAnt_serial_pk PRIMARY KEY,
+ pserial integer CONSTRAINT constAnt_serial_pk,
+ photo varchar2,
+);
+
+
+
+
+
+
+/* 현대 테이블 생성 */
+CREATE TABLE modern(
+ serial integer CONSTRAINT constMod_serial_pk PRIMARY KEY,
+ pserial integer CONSTRAINT constMod_pserial_nn NOT NULL,
+ mdate DATE,
+ seller varchar,
+ title varchar,
+ doc varchar,
+ hit integer,
+ price varchar,
+ lowprice varchar
+);
+
+/* 현대 파일 첨부 테이블 생성 */
+CREATE TABLE modernAtt(
+ serial integer CONSTRAINT constModt_serial_pk PRIMARY KEY,
+ pserial integer CONSTRAINT constModt_pserial_nn NOT NULL,
+ photo varchar
+);
+
+
+
+
+
+
+/* 공지 테이블 생성 */
+CREATE TABLE notice(
+ serial integer CONSTRAINT constNotc_serial_pk PRIMARY KEY,
+ manager varchar,
+ title varchar,
+ doc varchar,
+ hit integer,
+ mdate DATE,
+);
+
+
+
+
+
+/* 게시판 테이블 생성 */
+CREATE TABLE community(
+ serial integer CONSTRAINT constComu_serial_pk PRIMARY KEY,
+ pserial integer CONSTRAINT constComu_pserial_nn NOT NULL,
+ mdate DATE,
+ title varchar,
+ doc varchar,
+ hit integer,
+ 
+ photo varchar
+);
+
+/* 게시판 파일 첨부 테이블 생성 */
+CREATE TABLE communityAtt(
+ serial integer CONSTRAINT constComut_serial_pk PRIMARY KEY,
+ pserial integer CONSTRAINT constComut_pserial_nn NOT NULL,
+ photo varchar
+);

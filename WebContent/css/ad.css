@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+/*
+소개 페이지 css
+*/
+@charset "UTF-8";
+
+/* reset 수정하지마세요*/
+* {margin: 0;padding: 0; box-sizing: border-box;}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td{margin:0;padding:0;}
+h1, h2, h3, h4, h5, h6 {font-weight: 700; font-size: inherit;}
+a {color: inherit; text-decoration: inherit;}
+img {vertical-align: middle;}
+a img {border: none;}
+li {list-style: none;}
+address, em, i {font-style: normal;}
+/* reset 수정하지마세요*/
+
+/* -----사이드메뉴 시작-----------------*/
+
+#ad {
+	width:100%;
+	position : relative;
+	display: flex;
+	justify-content: space-around;
+}
+
+#ad #sub_menu{
+	width: 20%;
+	height : 400px;
+	border : 1px solid #000000;
+	display: inline-block;
+}
+
+#ad #sub_menu .sub_menubar{
+	margin:10px;
+	list-style : none;
+}
+
+#ad #sub_menu .sub_menubar .sub_menulist{
+	margin:30px;
+}
+
+#ad #sub_menu .sub_menubar .sub_menulist:hover{ /*수정*/
+	background-color: #808080;
+	cursor: pointer;
+}
+
+/* -------사이드메뉴 끝--------------------*/
+
+#ad #ad_center{
+	width : 70%;
+	border : 1px solid #000;
+	margin-left : 10px;
+	display: inline-block;
+}
+
+/*- 검색 메뉴 -*/
+
+#ad_frm{
+	width: 100%;
+}
+
+
+
+/*- 검색 메뉴 -*/
+
+
