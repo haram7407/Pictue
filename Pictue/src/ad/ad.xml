@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ad">
+
+<!-- 페이지 연산: 검색해서 나오게 -->
+<select id = 'totList' parameterType="String" resultType="Integer">
+	select count(serial) totList from ad
+	where 	title 	like '%${_parameter}%'
+	or  	doc		like '%${_parameter}%'
+	or		place	like '%${_parameter}%'
+</select>
+
+<!-- 조회(findStr,startNo,endNo) 계층형 쿼리 뺌 -->
+<!-- <select id= 'search' parameterType="ad.Page" resultType="ad.AdVo">
+  SELECT * FROM(
+  SELECT rownum rno, a.* from(
+    SELECT serial, pSerial, title,
+     id, hit, to_char(mdate,'rrrr-mm-dd') mDate FROM ad
+          where 	title 	like '%${findStr}%'
+			or  	doc		like '%${findStr}%'
+			or		place	like '%${findStr}%'
+          ORDER BY serial DESC )a
+   )WHERE rno BETWEEN #{startNo} AND #{endNo} -->
+   
+
+<select id= 'search' parameterType="ad.Page" resultType="ad.AdVo">
+SELECT * FROM(
+  SELECT rownum rno, a.* from(
+    SELECT serial, pSerial, title, place
+     id, hit, to_char(mdate,'rrrr-mm-dd') mDate FROM ad
+          where 	title 	like '%${findStr}%'
+			or  	doc		like '%${findStr}%'
+			or		place	like '%${findStr}%'
+          ORDER BY serial DESC )a
+   )WHERE rno BETWEEN #{startNo} AND #{endNo}
+</select>
+
+<!-- 상세보기 -->
+<select id='view' parameterType='Integer' resultType="ad.AdVo">
+	select * from ad where serial = #{_parameter}
+</select>
+
+<select id = 'att_view' parameterType='Integer' resultType='ad.AdAttVo'>
+	select * from att where pSerial = #{_parameter}
+</select>
+
+<!-- 조회수 증가 -->
+<update id = "hitUp" parameterType='Integer'>
+	update ad set hit=hit+1 where serial = #{_parameter}
+</update>
+
+<!-- 입력(board,boardAtt) -->
+<insert id = 'insert' parameterType="ad.AdVo">
+INSERT INTO ad(serial, pSerial, id, place, color, term, title, doc, hit, mdate)
+values(seq_brd.nextval, #{pSerial}, #{id}, #{place}, #{color}, #{term}, #{title}, #{doc}, 0, sysdate)
+</insert>
+
+<insert id = 'att_insert' parameterType="ad.AdAttVo">
+INSERT INTO att(serial, pSerial, oriAtt, sysAtt)
+values(seq_att.nextval, #{pSerial}, #{oriAtt}, #{sysAtt})
+</insert>
+
+<!-- 입력/댓글 처리시 사용될 serial -->
+<select id="getSerial" resultType="Integer">
+	select seq_brd.nextval from dual
+</select>
+
+<!-- 답글(board, boardAtt) -->
+<insert id = 'repl' parameterType = "ad.AdVo">
+INSERT INTO ad(serial, pSerial, id, place, color, term, title, doc, hit, mdate)
+values(#{serial}, #{pSerial}, #{id}, #{place}, #{color}, #{term}, #{title},#{doc},0,sysdate)
+</insert>
+
+<!-- 삭제(board, boardAtt) -->
+<select id='att_list' parameterType="Integer" resultType="ad.AdAttVo">
+	select sysAtt from att where pSerial = #{_parameter}
+</select>
+
+<delete id="delete" parameterType="ad.AdVo">
+	DELETE FROM ad WHERE serial = #{serial} AND id = #{id}
+</delete>
+<delete id="att_delete" parameterType="Integer">
+	DELETE FROM att WHERE pSerial = #{_parameter}
+</delete>
+
+<!-- 수정(board,boardAtt -->
+<update id='update' parameterType='ad.AdVo'>
+UPDATE ad SET title = #{title}, doc = #{doc}, term = #{term}, color = #{color}, place = #{place}
+ WHERE serial = #{serial} AND id = #{id}
+</update>
+
+<delete id = 'att_delete2' parameterType="String">
+	DELETE FROM att WHERE sysAtt=#{_parameter}
+</delete>
+
+</mapper>

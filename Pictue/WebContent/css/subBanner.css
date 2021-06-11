@@ -1,0 +1,141 @@
+@charset "UTF-8";
+
+/* reset 수정하지마세요 */
+* {margin: 0;padding: 0; box-sizing: border-box;}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td{margin:0;padding:0;}
+h1, h2, h3, h4, h5, h6 {font-weight: 700; font-size: inherit;}
+a {color: inherit; text-decoration: inherit;}
+img {vertical-align: middle;}
+a img {border: none;}
+li {list-style: none;}
+address, em, i {font-style: normal;}
+/* reset 수정하지마세요 */
+
+/* 폰트 수정하지마세요 */
+@font-face {
+    font-family: 'MapoFlowerIsland';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}/*마포꽃섬체- 약간 얇은느낌*/
+
+@font-face {
+    font-family: 'Dolbomche_B';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/Dolbomche_B.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}/*문화재돌봄체- bold*/
+
+@font-face {
+    font-family: 'Dolbomche_R';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/Dolbomche_R.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}/*문화재돌봄체- regular*/
+
+@font-face {
+    font-family: 'Eulyoo1945-SemiBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2102-01@1.0/Eulyoo1945-SemiBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 폰트 수정하지마세요 */
+
+#mBanner{
+    width: 100%;
+    position: relative;
+}
+ #mBanner #event{/*이벤트 창(창문이 있는 벽)*/
+    width: 100%;
+    height: 450px;
+    position: relative;
+}
+
+#event #banDoc{/*배너창 글씨*/
+position: absolute;
+top: 19.5%;
+left: 3%;
+color: #2F4F4F;
+width: 27%;
+height: 80%;
+font-size: 140%;
+line-height: 350%;
+font-weight: bold;
+font-family: 'Eulyoo1945-SemiBold';
+opacity: 0;
+}
+
+#event #banDoc h3{
+	font-size: 80%;
+}
+
+ #mBanner #event #mouse_hover{
+    position: absolute;
+    right: 0%;
+    width: 3%;
+    margin: 0 auto;
+    height: 72%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    top: 22%;
+}
+
+ #mBanner #event #mouse_hover input[type=button]{
+ 	height: 19.5%;
+ 	width: 15.8%;
+ 	border:none;
+ 	cursor: pointer;
+ 	background-color:rgba(240,240,240,0.8);
+ 	border-radius: 8%;
+ }
+ 
+ #mBanner #event #mouse_hover input[type=button]:hover{
+ 	background-color: rgba(74,74,74,0.3);
+ 	
+ 	/*바탕색을 서서히 변경*/		
+		transition-property:background-color;
+		transition-duration:1.5s;
+ }
+
+#container{/* 이벤트 창 내 배너창(창문틀)*/
+    position: absolute;
+    width: 67%;
+    height: 80.1%;
+    top: 19.5%;
+    left: 30%;
+}
+
+#container #slide{
+	position: relative;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	box-shadow: 1px 2px 3px rgba(0,0,0,0.7);
+}
+
+#container #slide #imgHref{
+	position:relative;
+	cursor: pointer;
+	width: 100%;
+	height:100%;
+	z-index: 0;
+}
+
+#container #slide #imgSrc{
+	opacity: 0;
+	z-index: -1;
+	position: absolute;
+}
+
+#event #colored{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0%;
+	z-index: -2;
+	opacity: 0;
+}
+

@@ -1,0 +1,66 @@
+/* user테이블 phone과 email을 not null로 변경(비번찾기나 블랙에 이용)*/
+CREATE TABLE pUser(
+ id varchar2(50) CONSTRAINT constUser_id_pk PRIMARY KEY,/*유저 아이디*/
+ pwd varchar2(50) CONSTRAINT constUser_pwd_nn NOT NULL,/*유저 암호*/
+ irum varchar2(30) CONSTRAINT constUser_irum_nn NOT NULL,/*유저 이름*/
+ phone varchar2(50),/*유저 폰번호*/
+ email varchar2(50),/*유저 이메일*/
+ host varchar2(100),/*@뒤에 붙는 주소*/
+ post varchar2(50),/*우편번호*/
+ address1 varchar2(100),/*시, 구, 동*/
+ address2 varchar2(100),/*상세주소*/
+ compare varchar2(100) CONSTRAINT const_compare CHECK(compare = '회원' OR compare = '관리자')/*회원 구분*/
+);
+
+/* 첨부파일 데이터 */
+CREATE TABLE att(
+ serial integer CONSTRAINT constAttb_serial_pk PRIMARY KEY,
+ pSerial integer,
+ oriAtt varchar2(1000), sysAtt varchar2(1000));
+
+
+
+/* 매니저 데이터 */
+INSERT INTO pUser values('haram', '1111',
+'김하람','010-1111-1111','qwer','@naver.com','1111','서울','종로','관리자');
+
+/* 유저 데이터 */
+INSERT INTO pUser values('user1', '1111', 
+'김미미','010-1111-1112','qweq','@naver.com','1111','서울','종로','회원');
+
+/* 블랙 데이터 */
+INSERT INTO pUser values('user2', '1111', 
+'김두두','010-1111-1122','qwqwe','@naver.com','1111','서울','종로','회원');
+
+/* user용 시퀀스 */
+CREATE SEQUENCE seq_pUser;
+
+/* 파일첨부용 시퀀스*/
+CREATE SEQUENCE seq_att;
+
+/* 게시판용 시퀀스 */
+CREATE SEQUENCE seq_brd;
+
+
+/* 홍보테이블- manager은 fk로 하려 했으나 중복값으로 인해 불가, 따라서 자바로 조절해야함 */
+CREATE TABLE ad(
+serial integer CONSTRAINT constAd_serial_pk PRIMARY KEY, 
+pSerial integer CONSTRAINT constAd_pserial_nn NOT NULL,
+id varchar2(50) CONSTRAINT constAd_id_fk REFERENCES pUser(id),
+place varchar2(50) CONSTRAINT constAd_plc_nn NOT NULL,
+color varchar2(50) CONSTRAINT const_Ad_color_nn NOT NULL,
+term varchar2(50) CONSTRAINT const_Ad_term_nn NOT NULL,
+title varchar2(100) CONSTRAINT const_Ad_title_nn NOT null,
+doc varchar2(1000),hit integer,mdate DATE
+);
+
+INSERT INTO ad VALUES(seq_brd.nextval, seq_pserial.nextval, 'haram',
+ '서울특별시 문화진흥원', '#ccddcc', '2021-05-25~2021-06-12','김수한무거북이와두루미','안녕하세요 잘보십시오',0,sysdate);
+INSERT INTO ad VALUES(seq_brd.nextval, seq_pserial.nextval, 'haram',
+ '북한산 정상꼭대기', '#aabbcc', '2021-05-22~2011-06-22','나는 낭만고양이','퉤퉤퉤퉤퉤',0,sysdate);
+INSERT INTO ad VALUES(seq_brd.nextval, seq_pserial.nextval, 'haram',
+ '내가그린기린그림', '#007762', '1995-05-11~1996-02-12','그림판으로 그린 그림','아우 하기싫다',0,sysdate);
+INSERT INTO ad VALUES(seq_brd.nextval, seq_pserial.nextval, 'haram',
+ '김하람의똥', '#248374', '1234-05-25~5678-06-12','살려주세요','집에 가고싶다',0,sysdate);
+INSERT INTO ad VALUES(seq_brd.nextval, seq_pserial.nextval, 'haram',
+ '우리집은어디인가요', '#293843', '2122-05-25~2021-08-12','아 저기있군요','안녕히가세요',0,sysdate);

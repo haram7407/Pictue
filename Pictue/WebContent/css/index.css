@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+/* reset 수정하지마세요 */
+* {margin: 0;padding: 0; box-sizing: border-box;}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td{margin:0;padding:0;}
+h1, h2, h3, h4, h5, h6 {font-weight: 700; font-size: inherit;}
+a {color: inherit; text-decoration: inherit;}
+img {vertical-align: middle;}
+a img {border: none;}
+li {list-style: none;}
+address, em, i {font-style: normal;}
+/* reset 수정하지마세요 */
+
+/*컬러지정*/
+:root{
+    --music-color:#ccc;
+    --duration-color: rgb(172, 163, 163);
+    --progressbar-color:#86858585;
+    --progress-color:rgb(243, 96, 96);
+    --lineeffect-color:#888;
+    --btn-hover-color:rgba(250, 171, 171, 0.452);
+    --active-color: rgba(255, 169, 169, 0.952);
+    --background-color:#fff;
+    --arrow-color:rgb(252,252,252,0.4);
+
+}
+
+@font-face {
+    font-family: 'MapoFlowerIsland';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff') format('woff');
+}/*마포꽃섬체- 약간 얇은느낌*/
+
+@font-face {
+    font-family: 'Dolbomche_B';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/Dolbomche_B.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}/*문화재돌봄체- bold*/
+
+@font-face {
+    font-family: 'Dolbomche_R';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/Dolbomche_R.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}/*문화재돌봄체- regular*/
+
+
+/*---------------몸통 시작-------------*/
+
+#index{
+    width: 100%;
+    position: relative;
+}
+
+#index #mid #content{
+	width: 75%;
+	margin: 0px auto;
+}
+#index #mid #notice{/* 공지 */
+	font-family: 'MapoFlowerIsland';
+    width: 100%;
+    height: 770px;
+    margin: 0px auto;
+}
+
+
+#index #mid #art{/* 미술작품코너 */
+	font-family: 'MapoFlowerIsland';
+    width: 100%;
+    min-height: 300px;
+    border: 1px solid #ccffcc;
+    margin: 0px auto;
+}
+/*---------------몸통 끝-------------*/
+
+#toTop{
+	position: fixed;
+	right: 50px; 
+	bottom: 80px;
+	cursor: pointer;
+	text-align: center;
+	font-family: 'MapoFlowerIsland';
+}

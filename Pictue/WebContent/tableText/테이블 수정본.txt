@@ -1,0 +1,282 @@
+/* 게시판용 시퀀스 */
+CREATE SEQUENCE seq_brd;
+create SEQUENCE seq_att;
+
+/* 유저용 시퀀스 */
+CREATE SEQUENCE seq_pUser;
+
+
+/*============================================================================================*/
+/* ----------user테이블 phone과 email을 not null로 변경(비번찾기나 블랙에 이용)-----------*/
+CREATE TABLE pUser(
+ id varchar2(50) CONSTRAINT constUser_id_pk PRIMARY KEY,/*유저 아이디*/
+ pwd varchar2(50) CONSTRAINT constUser_pwd_nn NOT NULL,/*유저 암호*/
+ irum varchar2(30) CONSTRAINT constUser_irum_nn NOT NULL,/*유저 이름*/
+ phone varchar2(50),/*유저 폰번호*/
+ email varchar2(50),/*유저 이메일*/
+ host varchar2(100),/*@뒤에 붙는 주소*/
+ post varchar2(50),/*우편번호*/
+ address1 varchar2(100),/*시, 구, 동*/
+ address2 varchar2(100),/*상세주소*/
+ compare varchar2(100) CONSTRAINT const_compare CHECK(compare = '회원' OR compare = '관리자')/*회원 구분*/
+);
+
+/* 매니저 데이터 */
+INSERT INTO pUser values('haram', '1111',
+'김하람','010-1111-1111','qwer','@naver.com','1111','서울','종로','관리자');
+
+/* 유저 데이터 */
+INSERT INTO pUser values('user1', '1111', 
+'김미미','010-1111-1112','qweq','@naver.com','1111','서울','종로','회원');
+
+/* 유저 데이터 */
+INSERT INTO pUser values('user2', '1111', 
+'김두두','010-1111-1122','qwqwe','@naver.com','1111','서울','종로','회원');
+
+/* 유저 - 1~20까지는 직접 입력한 데이터(나머지는 반복으로 돌림)*/
+INSERT INTO pUser(id, pwd, irum, phone, email, host, post, address1, address2, compare) 
+values('goGD', 'go8974', '고길동', '010-5642-7803', 'goGD', 'naver.com', '127032', '인천시 부평구 산곡2동', '원적로 344', '회원');
+INSERT INTO pUser(id, pwd, irum, phone, email, host, post, address1, address2, compare) 
+values('kangGD', 'kang0325', '강길동', '010-7988-0748', 'kangGD', 'gmail.com', '120780', '강원도 고성 간성읍', '남천마루2길 6', '회원');
+INSERT INTO pUser(id, pwd, irum, phone, email, host, post, address1, address2, compare) 
+values('nohGD', 'noh1111', '노길동', '010-9889-6247', 'nohGD', 'naver.com', '403257', '광주광역시 광산구 어룡동', '선운로 34', '회원');
+INSERT INTO pUser(id, pwd, irum, phone, email, host, post, address1, address2, compare) 
+values('maanGD', 'maan4578', '만길동', '010-1077-4502', 'maanGD', 'hanmail.net', '305841', '충청북도 옥천군 옥천읍', '문정리 430-1', '회원');
+INSERT INTO pUser(id, pwd, irum, phone, email, host, post, address1, address2, compare) 
+values('leeGD', 'lee0598', '이길동', '010-2457-5821', 'leeGD', 'naver.com', '204852', '인천광역시 중구 중산동', '은하수로 351', '회원');
+INSERT INTO pUser(id, pwd, irum, phone, email, host, post, address1, address2, compare) 
+values('choiGD', 'choi7895', '최길동', '010-5824-0478', 'choiGD', 'gmail.com', '605782', '울산광역시 남구 삼산동 ', '182-1', '회원');
+INSERT INTO pUser(id, pwd, irum, phone, email, host, post, address1, address2, compare) 
+values('banGD', 'ban9521', '반길동', '010-2014-0458', 'banGD', 'gmail.com', '105238', '경기도 광주 초월읍', '쌍동리 389', '회원');
+INSERT INTO pUser(id, pwd, irum, phone, email, host, post, address1, address2, compare) 
+values('seoGD', 'seo4201', '서길동', '010-4871-2547', 'seoGD', 'naver.com', '784102', '제주특별자치도 제주시 한림읍', '월계로 66', '회원');
+INSERT INTO pUser(id, pwd, irum, phone, email, host, post, address1, address2, compare) 
+values('danGD', 'dan1541', '단길동', '010-7012-4568', 'danGD', 'hanmail.net', '805204', '경기도 안성시 공도읍', '진사리 산49-1', '회원');
+INSERT INTO pUser(id, pwd, irum, phone, email, host, post, address1, address2, compare) 
+values('neoGD', 'neo0841', '너길동', '010-4544-2353', 'neoGD', 'naver.com', '254741', '부산시 강서구 명지동', '명지오션시티11로 84', '회원');
+INSERT INTO pUser(id, pwd, irum, phone, email, host, post, address1, address2, compare) 
+values('ranGD', 'ran8570', '란길동', '010-8015-0752', 'ranGD', 'gmial.com', '785120', '충청북도 제천시 강제동', '산33-19', '회원');
+INSERT INTO pUser(id, pwd, irum, phone, email, host, post, address1, address2, compare) 
+values('maGD', 'ma0521', '마길동', '010-0984-0874', 'maGD', 'gmial.com', '032587', '울산광역시 울주군 언양읍', '반천리 1023-51', '회원');
+INSERT INTO pUser(id, pwd, irum, phone, email, host, post, address1, address2, compare) 
+values('bobGD', 'bob8080', '밥길동', '010-9899-4465', 'bobGD', 'naver.com', '800307', '울산광역시 울주군 삼남면', '교동리 1555-1', '회원');
+INSERT INTO pUser(id, pwd, irum, phone, email, host, post, address1, address2, compare) 
+values('sanGD', 'san5547', '산길동', '010-5520-5071', 'sanGD', 'gmail.com', '774182', '울산광역시 동구 전하2동', '봉수로 270', '회원');
+INSERT INTO pUser(id, pwd, irum, phone, email, host, post, address1, address2, compare) 
+values('annGD', 'ann9082', '안길동', '010-8052-7845', 'annGD', 'hanmail.net', '090718', ' 경기도 성남시 중원구', '은행2동 산성대로552번길 15', '회원');
+INSERT INTO pUser(id, pwd, irum, phone, email, host, post, address1, address2, compare) 
+values('zaaGD', 'zaa1001', '자길동', '010-0636-1100', 'zaaGD', 'hanmail.net', '710041', '경기도 양평군 강상면', '병산리 103-1', '회원');
+INSERT INTO pUser(id, pwd, irum, phone, email, host, post, address1, address2, compare) 
+values('huuGD', 'huu6654', '흐길동', '010-2066-4044', 'huuGD', 'naver.com', '100475', '경기도 안양시 동안구', '평촌동 34', '회원');
+
+
+/* 데이터 생성 */
+DECLARE
+BEGIN
+   FOR i IN 21..100 LOOP
+      INSERT INTO pUser(id, pwd, irum, phone, email, host, post, address1, address2, compare) 
+      values('aaaa'||i, 'aaaa1111', '일길동', '010-1111-1111', 'aaaaa', 'naver.com', '404300', '인천시 부평구 ', '명지오션시티11로', '회원');
+   END LOOP;
+END;
+
+COMMIT;
+
+SELECT * FROM puser;
+
+/*============================================================================================*/
+
+/* 홍보테이블- manager은 fk로 하려 했으나 중복값으로 인해 불가, 따라서 자바로 조절해야함 */
+CREATE TABLE ad(
+serial integer CONSTRAINT constAd_serial_pk PRIMARY KEY, 
+pSerial integer CONSTRAINT constAd_pserial_nn NOT NULL,
+id varchar2(50) CONSTRAINT constAd_id_fk REFERENCES pUser(id),
+place varchar2(50) CONSTRAINT constAd_plc_nn NOT NULL,
+color varchar2(50) CONSTRAINT const_Ad_color_nn NOT NULL,
+term varchar2(50) CONSTRAINT const_Ad_term_nn NOT NULL,
+title varchar2(100) CONSTRAINT const_Ad_title_nn NOT null,
+doc varchar2(1000),hit integer,mdate DATE
+);
+
+DECLARE
+BEGIN
+   FOR i IN 1..5 LOOP
+      INSERT INTO ad(serial, pSerial, id, place, color, term, title, doc, hit, mdate) 
+      values(seq_brd.nextval, 0, 'haram', 'KT&G 상상마당', '#a8d83'||i, '2021.04.21~2021.05.21', '김효연 : 감각이상'||i, '서울전시회입니다', 0 , sysdate);
+   END LOOP;
+END;
+
+DECLARE
+BEGIN
+   FOR i IN 6..10 LOOP
+      INSERT INTO ad(serial, pSerial, id, place, color, term, title, doc, hit, mdate) 
+      values(seq_brd.nextval, 0, 'haram', '롯데월드몰', '#a8d8cc', '2021.04.30~2021.05.27', 'STREET NOISE'||i, '서울전시회입니다', 0 , sysdate);
+   END LOOP;
+END;
+
+DECLARE
+BEGIN
+   FOR i IN 11..20 LOOP
+      INSERT INTO ad(serial, pSerial, id, place, color, term, title, doc, hit, mdate) 
+      values(seq_brd.nextval, 0, 'haram', '국립민속박물관', '#a8cc'||i, '2021.05.01~2021.06.01', '부산, 바다와 뭍의 나들목'||i, '부산을 전시하는 서울박람회입니다.', 0 , sysdate);
+   END LOOP;
+END;
+
+DECLARE
+BEGIN
+   FOR i IN 21..30 LOOP
+      INSERT INTO ad(serial, pSerial, id, place, color, term, title, doc, hit, mdate) 
+      values(seq_brd.nextval, 0, 'haram', '우리미술관', '#bbcc'||i, '2021.05.05~2021.06.05', '김봄 : 심상지도'||i, '인천전시회입니다.', 0 , sysdate);
+   END LOOP;
+END;
+
+DECLARE
+BEGIN
+   FOR i IN 31..40 LOOP
+      INSERT INTO ad(serial, pSerial, id, place, color, term, title, doc, hit, mdate) 
+      values(seq_brd.nextval, 0, 'haram', '대구문화예술회관', '#bbaa'||i, '2021.05.06~2021.06.06', '가정의 달 기념전 <일상은 아름다워>'||i, '대구전시회입니다.', 0 , sysdate);
+   END LOOP;
+END;
+
+COMMIT;
+
+
+SELECT * FROM ad;
+
+/*============================================================================================*/
+
+/* 첨부파일 데이터 */
+CREATE TABLE att(
+ serial integer CONSTRAINT constAttb_serial_pk PRIMARY KEY,
+ pSerial integer,
+ oriAtt varchar2(1000), sysAtt varchar2(1000));
+
+DECLARE
+BEGIN
+   FOR i IN 1..20 LOOP
+      INSERT INTO att(serial,pSerial,oriAtt,sysAtt) 
+      values(seq_att.nextval, i, 'an'||i||'.jpg', 'an'||i||'.jpg');
+   END LOOP;
+END;
+
+DECLARE
+BEGIN
+   FOR i IN 21..40 LOOP
+      INSERT INTO att(serial,pSerial,oriAtt,sysAtt) 
+      values(seq_att.nextval, i, 'mo'||(i-20)||'.jpg', 'mo'||(i-20)||'.jpg');
+   END LOOP;
+END;
+
+DECLARE
+BEGIN
+   FOR i IN 81..100 LOOP
+      INSERT INTO att(serial,pSerial,oriAtt,sysAtt) 
+      values(seq_att.nextval, i, 'an'||(i-80)||'.jpg', 'an'||(i-80)||'.jpg');
+   END LOOP;
+END;
+
+DECLARE
+BEGIN
+   FOR i IN 101..120 LOOP
+      INSERT INTO att(serial,pSerial,oriAtt,sysAtt) 
+      values(seq_att.nextval, i, 'mo'||(i-100)||'.jpg', 'mo'||(i-100)||'.jpg');
+   END LOOP;
+END;
+
+COMMIT;
+
+SELECT * FROM att;
+
+/*============================================================================================*/
+/* 공지사항 테이블 */
+CREATE TABLE notice(
+serial integer CONSTRAINT constNot_serial_pk PRIMARY KEY, 
+pSerial integer CONSTRAINT constNot_pserial_nn NOT NULL,
+id varchar2(50) CONSTRAINT constNot_id_fk REFERENCES pUser(id),
+title varchar2(100) CONSTRAINT const_Not_title_nn NOT null,
+doc varchar2(1000),hit integer,mdate DATE
+);
+
+DECLARE
+BEGIN
+   FOR i IN 1..10 LOOP
+      INSERT INTO notice(serial, pSerial, id, title, doc, hit, mdate) 
+      values(seq_brd.nextval, 0, 'haram', '이용수칙 안내'||i, '이용수칙 안내사항입니다.', 0 , sysdate);
+   END LOOP;
+END;
+
+DECLARE
+BEGIN
+   FOR i IN 11..20 LOOP
+      INSERT INTO notice(serial, pSerial, id, title, doc, hit, mdate) 
+      values(seq_brd.nextval, 0, 'haram', '주의사항 안내'||i, '주의사항 꼭 지켜주세요', 0 , sysdate);
+   END LOOP;
+END;
+
+DECLARE
+BEGIN
+   FOR i IN 21..30 LOOP
+      INSERT INTO notice(serial, pSerial, id, title, doc, hit, mdate) 
+      values(seq_brd.nextval, 0, 'haram', '공지사항'||i, '공지사항입니다.', 0 , sysdate);
+   END LOOP;
+END;
+
+DECLARE
+BEGIN
+   FOR i IN 31..40 LOOP
+      INSERT INTO notice(serial, pSerial, id, title, doc, hit, mdate) 
+      values(seq_brd.nextval, 0, 'haram', '경고 유저 안내'||i, '경고 유저 안내입니다.', 0 , sysdate);
+   END LOOP;
+END;
+
+COMMIT;
+
+
+SELECT * FROM notice;
+
+/*============================================================================================*/
+/*고대 테이블 생성*/
+CREATE TABLE anci(
+serial integer CONSTRAINT constAnci_serial_pk PRIMARY KEY, 
+pSerial integer CONSTRAINT constAnci_pserial_nn NOT NULL,
+id varchar2(50) CONSTRAINT constAnci_id_fk REFERENCES pUser(id),
+title varchar2(100) CONSTRAINT const_Anci_title_nn NOT null,
+doc varchar2(1000),hit integer,mdate DATE
+);
+
+DECLARE
+BEGIN
+   FOR i IN 1..10 LOOP
+      INSERT INTO anci(serial, pSerial, id, title, doc, hit, mdate) 
+      values(seq_brd.nextval, 0, 'user1', '르네상스 미술작품'||i, '르네상스시대의 미술작품입니다.', 0 , sysdate);
+   END LOOP;
+END;
+
+DECLARE
+BEGIN
+   FOR i IN 11..20 LOOP
+      INSERT INTO notice(serial, pSerial, id, title, doc, hit, mdate) 
+      values(seq_brd.nextval, 0, 'haram', '인상주의'||i, '인상주의미술작품입니다.', 0 , sysdate);
+   END LOOP;
+END;
+
+DECLARE
+BEGIN
+   FOR i IN 21..30 LOOP
+      INSERT INTO notice(serial, pSerial, id, title, doc, hit, mdate) 
+      values(seq_brd.nextval, 0, 'user2', '고딕양식미술작품'||i, '고딕양식미술작품입니다.', 0 , sysdate);
+   END LOOP;
+END;
+
+DECLARE
+BEGIN
+   FOR i IN 31..40 LOOP
+      INSERT INTO notice(serial, pSerial, id, title, doc, hit, mdate) 
+      values(seq_brd.nextval, 0, 'aaaa21', '낭만주의'||i, '낭만주의파 미술작품입니다.', 0 , sysdate);
+   END LOOP;
+END;
+
+COMMIT;
+
+
+SELECT * FROM anci;
+

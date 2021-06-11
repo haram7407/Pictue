@@ -1,0 +1,292 @@
+@charset "UTF-8";
+
+/*
+소개 페이지 css
+*/
+
+/* reset 수정하지마세요*/
+* {margin: 0;padding: 0; box-sizing: border-box;}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td{margin:0;padding:0;}
+h1, h2, h3, h4, h5, h6 {font-weight: 700; font-size: inherit;}
+a {color: inherit; text-decoration: inherit;}
+img {vertical-align: middle;}
+a img {border: none;}
+li {list-style: none;}
+address, em, i {font-style: normal;}
+/* reset 수정하지마세요*/
+/* 글씨체 수정하지마세요 */
+@font-face {
+    font-family: 'MapoFlowerIsland';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff') format('woff');
+}/*마포꽃섬체- 약간 얇은느낌*/
+
+
+body{
+	font-family: 'MapoFlowerIsland';
+}
+
+#notice_frm{
+	width: 100%;
+	position: relative;
+}
+
+#notice_frm>h1{
+	font-size: 25px;
+    margin: 20px;
+    width: 70%;
+}
+
+
+/*- 검색 메뉴 -*/
+#frm_notice{
+	margin-left: 30px;	
+}
+#frm_notice .find_zone{
+	float:right;
+	width: 90%;
+}
+
+#btnInsert, #btnFind, #btn_wrap input[type="button"]{
+	border: 1px solid #b2b2b2; 
+	border-radius: 0; /* iSO 둥근모서리 제거 */ 
+	outline-style: none; /* 포커스시 발생하는 효과 제거를 원한다면 */ 
+	-webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ 
+	-moz-appearance: none; 
+	appearance: none;
+	margin: 5px;
+	font-family: inherit; /* 폰트 상속 */ 
+	cursor: pointer; 
+	width: 4%; /* 원하는 너비 설정 */
+	height: auto; /* 높이값 초기화 */ 
+	line-height : normal; /* line-height 초기화 */ 
+	padding: 3px 5px; /* 원하는 여백 설정, 상하단 여백으로 높이를 조절 */ 
+	margin-right: 30px;
+    margin-left: 30px;
+}
+
+.find_zone input[type="search"]{
+	width: 31%; /* 원하는 너비 설정 */ 
+	height: auto; /* 높이값 초기화 */ 
+	line-height : normal; /* line-height 초기화 */ 
+	padding: 3px; /* 원하는 여백 설정, 상하단 여백으로 높이를 조절 */ 
+	font-family: inherit; /* 폰트 상속 */ 
+	border: 1px solid #b2b2b2; 
+	border-radius: 0; /* iSO 둥근모서리 제거 */ 
+	outline-style: none; /* 포커스시 발생하는 효과 제거를 원한다면 */ 
+	-webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ 
+	-moz-appearance: none; 
+	appearance: none;
+	margin: 5px;
+}
+
+#notice_frm .table{
+	border-top: 4px double #aaa;
+    margin: 20px 30px;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 4px double #aaa;
+}
+.table .no, .items .item .no{
+	width:3%;
+	display: inline-block;
+}
+
+.table .title, .items .item .title{
+	width:30%;
+	display: inline-block;
+}
+
+#notice_frm .place, .items .item .place{
+	width:20%;
+	display: inline-block;
+}
+
+#notice_frm .date, .items .item .date{
+	width:15%;
+	display: inline-block;
+}
+
+#notice_frm .id, .items .item .id{
+	width:20%;
+	display: inline-block;
+}
+
+#notice_frm .hit, .items .item .hit{
+	width:10%;
+	display: inline-block;
+}
+
+#notice_frm .items{
+	width: 100%;
+    margin-left: 49px;
+}
+
+#notice_frm .items .item{
+	padding: 20px 0px;
+	
+}
+
+#notice_frm .items .item:hover{
+	background-color: #D4DEBC;
+	cursor: pointer;
+	transition: background-color 0.5s;
+}
+
+
+#notice_frm .table .no {
+	font-weight: bold;
+}
+#notice_frm .table .title{
+	font-weight: bold;
+}
+
+#notice_frm .table .place{
+	font-weight: bold;
+}
+
+#notice_frm .table .date{
+	font-weight: bold;
+}
+
+#notice_frm .table .id{
+	font-weight: bold;
+}
+
+#notice_frm .table .hit{
+	font-weight: bold;
+}
+#btn_wrap, #btn_zone{
+	margin: auto;
+    margin-top: 20px;
+    border-top: 2px solid #f0f0f0;
+    padding: 20px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+
+/*- 검색 메뉴 -*/
+
+/* 상세창 */
+#frm_notice input[type="button"]{
+	border: 1px solid #b2b2b2; 
+	border-radius: 0; /* iSO 둥근모서리 제거 */ 
+	outline-style: none; /* 포커스시 발생하는 효과 제거를 원한다면 */ 
+	-webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ 
+	-moz-appearance: none; 
+	appearance: none;
+	margin: 5px;
+	font-family: inherit; /* 폰트 상속 */ 
+	cursor: pointer; 
+	width: 4%; /* 원하는 너비 설정 */
+	height: auto; /* 높이값 초기화 */ 
+	line-height : normal; /* line-height 초기화 */ 
+	padding: 3px 5px; /* 원하는 여백 설정, 상하단 여백으로 높이를 조절 */ 
+	margin-right: 30px;
+    margin-left: 30px;
+}
+
+#frm_notice input[type="text"]{
+	width: 31%; /* 원하는 너비 설정 */ 
+	height: auto; /* 높이값 초기화 */ 
+	line-height : normal; /* line-height 초기화 */ 
+	padding: 3px; /* 원하는 여백 설정, 상하단 여백으로 높이를 조절 */ 
+	font-family: inherit; /* 폰트 상속 */ 
+	border: 1px solid #b2b2b2; 
+	border-radius: 0; /* iSO 둥근모서리 제거 */ 
+	outline-style: none; /* 포커스시 발생하는 효과 제거를 원한다면 */ 
+	-webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ 
+	-moz-appearance: none; 
+	appearance: none;
+	margin: 5px;
+}
+
+#frm_notice textarea{
+	width: 90%;
+	margin:auto;
+	height:200px;
+	line-height : normal; /* line-height 초기화 */ 
+	padding: 3px; /* 원하는 여백 설정, 상하단 여백으로 높이를 조절 */ 
+	font-family: inherit; /* 폰트 상속 */ 
+	border: 1px solid #b2b2b2; 
+	border-radius: 0; /* iSO 둥근모서리 제거 */ 
+	outline-style: none; /* 포커스시 발생하는 효과 제거를 원한다면 */ 
+	-webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ 
+	-moz-appearance: none; 
+	appearance: none;
+}
+
+#frm_notice label{
+	font-family: 'MapoFlowerIsland';
+	top: 1px; /* input 요소의 border-top 설정값 만큼 */ 
+	left: 1px; /* input 요소의 border-left 설정값 만큼 */ 
+	padding: .8em .5em; /* input 요소의 padding 값 만큼 */ 
+	color: #000040;
+	cursor: text; 
+	margin: 5px;
+}
+
+#frm_notice input[type="file"]{
+	border: 1px solid #b2b2b2; 
+	border-radius: 0; /* iSO 둥근모서리 제거 */ 
+	outline-style: none; /* 포커스시 발생하는 효과 제거를 원한다면 */ 
+	-webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ 
+	-moz-appearance: none; 
+	appearance: none;
+	margin: 5px;
+	font-family: inherit; /* 폰트 상속 */ 
+	cursor: pointer; 
+	width: 87%; /* 원하는 너비 설정 */
+	height: auto; /* 높이값 초기화 */ 
+	line-height : normal; /* line-height 초기화 */ 
+	padding: 3px 5px; /* 원하는 여백 설정, 상하단 여백으로 높이를 조절 */ 
+	margin-right: 30px;
+    margin-left: 30px;
+}
+
+/* 상세창 */
+
+/*미리보기 창*/
+#notice_frm #image_preview{
+		width: 90%;
+		height: 200px;
+    	margin: 30px;
+	}
+	
+	#image_preview img{
+	width: 200px;
+	height: 200px;
+	}
+
+	#image_preview #attzone{
+	border: 1px dotted rgb(70, 70, 70);
+	width: 100%;
+	min-height: 200px;
+	background-color: #f0f0f0;
+	margin: 20px auto;
+	}
+	#image_preview #attzone .item{
+		width: 130px;
+		height: 150px;
+		margin: 5px;
+		position: relative;
+		display: inline-block;
+	}
+	
+	#attzone img{
+	width: 100%;
+	height: 100%;
+	}
+	
+	#attzone .del_btn{
+	position: absolute;
+	font-size: 13pt;
+	color: #ff4444;
+	right: 3px;
+	bottom: 3px;
+	background-color: rgba(255,255,255,0.3);
+	padding: 0 5px;
+	border-width: 0;
+	cursor: pointer;
+	}

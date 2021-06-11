@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="notice">
+
+<!-- 페이지 연산: 검색해서 나오게 -->
+<select id = 'totList' parameterType="String" resultType="Integer">
+	select count(serial) totList from notice
+	where 	title 	like '%${_parameter}%'
+	or  	doc		like '%${_parameter}%'
+</select>
+
+<!-- 조회(findStr,startNo,endNo) 계층형 쿼리 뺌 -->
+<select id= 'search' parameterType="notice.Page" resultType="notice.NoticeVo">
+SELECT * FROM(
+  SELECT rownum rno, t.* from(
+    SELECT serial, pSerial, title,
+     id, hit, to_char(mdate,'rrrr-mm-dd') mDate FROM notice
+          where 	title 	like '%${findStr}%'
+			or  	doc		like '%${findStr}%'
+          ORDER BY serial DESC )t
+   )WHERE rno BETWEEN #{startNo} AND #{endNo}
+</select>
+
+<!-- 상세보기 -->
+<select id='view' parameterType='Integer' resultType="notice.NoticeVo">
+	select * from notice where serial = #{_parameter}
+</select>
+
+<select id = 'att_view' parameterType='Integer' resultType='notice.NoticeAttVo'>
+	select * from att where pSerial = #{_parameter}
+</select>
+
+<!-- 조회수 증가 -->
+<update id = "hitUp" parameterType='Integer'>
+	update notice set hit=hit+1 where serial = #{_parameter}
+</update>
+
+<!-- 입력(board,boardAtt) -->
+<insert id = 'insert' parameterType="notice.NoticeVo">
+INSERT INTO notice(serial, pSerial, id, title, doc, hit, mdate)
+values(seq_brd.nextval, #{pSerial}, #{id}, #{title}, #{doc}, 0, sysdate)
+</insert>
+
+<insert id = 'att_insert' parameterType="notice.NoticeAttVo">
+INSERT INTO att(serial, pSerial, oriAtt, sysAtt)
+values(seq_att.nextval, #{pSerial}, #{oriAtt}, #{sysAtt})
+</insert>
+
+<!-- 입력/댓글 처리시 사용될 serial -->
+<select id="getSerial" resultType="Integer">
+	select seq_brd.nextval from dual
+</select>
+
+<!-- 답글(board, boardAtt) -->
+<insert id = 'repl' parameterType = "notice.NoticeVo">
+INSERT INTO notice(serial, pSerial, id, title, doc, hit, mdate)
+values(#{serial}, #{pSerial}, #{id}, #{title},#{doc},0,sysdate)
+</insert>
+
+<!-- 삭제(board, boardAtt) -->
+<select id='att_list' parameterType="Integer" resultType="notice.NoticeAttVo">
+	select sysAtt from att where pSerial = #{_parameter}
+</select>
+
+<delete id="delete" parameterType="notice.NoticeVo">
+	DELETE FROM notice WHERE serial = #{serial} AND id = #{id}
+</delete>
+<delete id="att_delete" parameterType="Integer">
+	DELETE FROM att WHERE pSerial = #{_parameter}
+</delete>
+
+<!-- 수정(board,boardAtt -->
+<update id='update' parameterType='notice.NoticeVo'>
+UPDATE notice SET title = #{title}, doc = #{doc}
+ WHERE serial = #{serial} AND id = #{id}
+</update>
+
+<delete id = 'att_delete2' parameterType="String">
+	DELETE FROM att WHERE sysAtt=#{_parameter}
+</delete>
+
+</mapper>

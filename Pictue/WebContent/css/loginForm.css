@@ -1,0 +1,75 @@
+@charset "UTF-8";
+
+/* reset 수정하지마세요 */
+* {margin: 0;padding: 0; box-sizing: border-box;}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tbody, tfoot, thead, tr, th, td{margin:0;padding:0;}
+h1, h2, h3, h4, h5, h6 {font-weight: 700; font-size: inherit;}
+a {color: inherit; text-decoration: inherit;}
+img {vertical-align: middle;}
+a img {border: none;}
+li {list-style: none;}
+address, em, i {font-style: normal;}
+/* reset 수정하지마세요 */
+
+@font-face {
+    font-family: 'MapoFlowerIsland';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff') format('woff');
+}/*마포꽃섬체- 약간 얇은느낌*/
+
+body{
+	font-family: 'MapoFlowerIsland';
+}
+
+#LoginFrm{
+	width: 100%;
+	margin: auto;
+	border: 1px solid #ccc;
+	height: 400px;
+}
+
+#LoginFrm h1{
+	margin: auto;
+	margin-bottom: 1%;
+    margin-left: 30%;
+	margin-top: 3%;
+	font-size: 30px;
+}
+
+#LoginFrm #frmLogin{
+    width: 50%;
+    margin: auto;
+    border: 1px solid rgb(158,158,158);
+    font-size: 120%;
+    line-height: 250%;
+    height: 200px;
+}
+
+#frmLogin label{
+	margin-left:30%;
+	margin-left: 30%;
+}
+
+#LoginFrm #frmLogin input[type=submit]{
+	border:none;
+	padding: 2px 4px;
+	cursor: pointer;
+	background-color: rgba(0,0,0,0);
+    color: #0e522d;
+    font-size: 120%;
+    font-family: 'MapoFlowerIsland';
+    font-weight: bold;
+}
+
+#LoginFrm #findSet{
+	margin-top: 5%;
+	margin-left: 30%;
+}
+
+#id{
+margin-left: 8%;
+}
+
+#btnReg{
+	color: #0e522d;
+	font-weight: bold;
+}

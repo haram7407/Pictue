@@ -1,0 +1,67 @@
+/*
+제품 입출고 관련한 스타일
+작성자 : 김동진(2021.04)
+*/
+@charset "UTF-8";
+
+#cqboard{
+	margin-top:15px;
+	background-color:#eee;
+	border-radius:8px;
+	padding:8px;
+}
+
+#cqboard>h1{
+	font-size:16pt;
+	margin-bottom:15px;
+}
+
+#cqboard>form>label{
+	display: inline-block;
+	width:70px;
+}
+
+#cqboard>form>#btn_zone{
+	text-align: center;
+	margin-top:10px;
+	padding-top:10px;
+	border-top: 2px dotted #aaa;
+	
+}
+
+#cqboard .find_zone{
+	display:inline-block;
+	float:right;
+}
+
+#cqboard .title{
+	border-top:2px solid #aaa;
+	border-bottom:2px solid #aaa;
+	margin-top:10px;
+}
+
+#cqboard .title>span, #cqboard .item>span{
+	display:inline-block;
+}
+
+#cqboard .serila{width:50px;}
+#cqboard .id{width:50px;}
+#cqboard .title{width:120px;}
+#cqboard .mdate{width:80px;}
+#cqboard .hit{width:120px;}
+
+#cqboard #btn_zone{
+	text-align: center;
+	margin-top:10px;
+	padding-top:10px;
+	border-top: 2px dotted #aaa;
+}
+
+#cqboard>#btn_zone input[type='button']{
+	border-radius:5px;
+}
+
+#cqboard .item:hover{
+	background-color : #ccc;
+	cursor : pointer;
+}
